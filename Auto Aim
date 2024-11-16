@@ -1,5 +1,5 @@
 local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-function tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA(data) m=string.sub(data, 0, 55) data=data:gsub(m,'')
+function PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG(data) m=string.sub(data, 0, 55) data=data:gsub(m,'')
 
 data = string.gsub(data, '[^'..b..'=]', '') return (data:gsub('.', function(x) if (x == '=') then return '' end local r,f='',(b:find(x)-1) for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end return r; end):gsub('%d%d%d?%d?%d?%d?%d?%d?', function(x) if (#x ~= 8) then return '' end local c=0 for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end return string.char(c) end)) end
 
@@ -7,23 +7,105 @@ data = string.gsub(data, '[^'..b..'=]', '') return (data:gsub('.', function(x) i
  
 
 
-local Players = game:GetService(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('aHrZJOyrNHtPccZzAAgEENWbhImEfSpjsRlQYKknmzdVoKdomSueqvLUGxheWVycw=='))
+local Players = game:GetService(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('kQOFqfCkPaChwODpqjmxnqhSDuiLLJIJWPIlnzzVGsdpJIslFlZURuSUGxheWVycw=='))
 local LocalPlayer = Players.LocalPlayer
-local Camera = game:GetService(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('ZeQxjRexkEWkOgQasKKkmnVDAheXnApXTPqcPxTaWpeWsDMZPXfsxwxV29ya3NwYWNl')).CurrentCamera
+local Camera = game:GetService(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('uPsNNzCHVUkVyXZQVbygoNOZkDLnLiiXvXMmFBjnkZmmZDyckgnranCV29ya3NwYWNl')).CurrentCamera
+local RunService = game:GetService(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('JlSrmhLgUHUOyILcfTstapOhItlIBjGhCTevgxvdPvKksfkCboEKrThUnVuU2VydmljZQ=='))
 
--- Error handling function
-local function handleError(err)
-    warn(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('cFXQLNsDsgyHYQDJAPGHyOWhBwmUElWTPCmHJgQNrzhVSjVUHBMHCZxQW4gZXJyb3Igb2NjdXJyZWQ6IA==') .. tostring(err))
+-- Create the GUI
+local screenGui = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('syuufinrgSqfwEwwsSLmvNkUkUzSyRvgLjwlUrhKKsOKCfpDUFQbuyYU2NyZWVuR3Vp'))
+screenGui.Parent = LocalPlayer.PlayerGui
+
+-- Create the menu frame
+local menuFrame = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('SRcuyRuPgUiUScZTOJAOKFclEFirRsxwaxZukTtwxfehkYMrnTxxHasRnJhbWU='))
+menuFrame.Size = UDim2.new(0, 200, 0, 150)
+menuFrame.Position = UDim2.new(0.5, -100, 0.5, -75)  -- Centered on screen
+menuFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+menuFrame.BackgroundTransparency = 0.5
+menuFrame.Parent = screenGui
+
+-- Title
+local titleLabel = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('qlnyMQDoCRMugGmExqdAZGFhlgvhPsrnWxuGhJwRgbrRLOzvRBHDIirVGV4dExhYmVs'))
+titleLabel.Size = UDim2.new(1, 0, 0, 30)
+titleLabel.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('cMDpFiHFyCPFcVVyNeGqpCCXOeyNffAarFTsAyBpRsNVepBRUqkDsFAQXV0byBBaW0gJiBFU1A=')
+titleLabel.TextColor3 = Color3.new(1, 1, 1)
+titleLabel.BackgroundTransparency = 1
+titleLabel.TextSize = 18
+titleLabel.Parent = menuFrame
+
+-- Auto Aim Toggle Button
+local autoAimButton = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('NxFwdBCzevYUlhZsuaeHrUrOrFuJhaKTIEmFHifeoAQELndvvCYxMdQVGV4dEJ1dHRvbg=='))
+autoAimButton.Size = UDim2.new(1, 0, 0, 40)
+autoAimButton.Position = UDim2.new(0, 0, 0.2, 0)
+autoAimButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('fmUkRBvwWZcWJqbDQhYtxsTnMWlElQXUMtmwCrGixWQHsUKlyojBwKNQXV0byBBaW06IE9GRg==')
+autoAimButton.TextColor3 = Color3.new(1, 1, 1)
+autoAimButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+autoAimButton.TextSize = 16
+autoAimButton.Parent = menuFrame
+
+-- ESP Toggle Button
+local espButton = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('TAGKpwCIHsxmMPZTBcWZogkUqIJerDdhaCMRrkygqsgBAHsvZrHjYmvVGV4dEJ1dHRvbg=='))
+espButton.Size = UDim2.new(1, 0, 0, 40)
+espButton.Position = UDim2.new(0, 0, 0.6, 0)
+espButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('nEkFfFGUcIidHacfTUfryKjyoJVLsafZWFZyfrcUrunzINbEvdwXrHqRVNQOiBPRkY=')
+espButton.TextColor3 = Color3.new(1, 1, 1)
+espButton.BackgroundColor3 = Color3.new(0.3, 0.3, 0.3)
+espButton.TextSize = 16
+espButton.Parent = menuFrame
+
+-- Variables to control toggles
+local autoAimEnabled = false
+local espEnabled = false
+
+-- Variables for draggable GUI
+local dragging = false
+local dragInput, dragStart, startPos
+
+-- Function to handle dragging the GUI (supports both Mouse and Touch)
+local function onInputBegan(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = menuFrame.Position
+    end
 end
 
--- Function to create ESP
+local function onInputChanged(input)
+    if dragging then
+        local delta = input.Position - dragStart
+        menuFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end
+
+local function onInputEnded(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = false
+    end
+end
+
+-- Connect input events
+screenGui.InputBegan:Connect(onInputBegan)
+screenGui.InputChanged:Connect(onInputChanged)
+screenGui.InputEnded:Connect(onInputEnded)
+
+-- Function to create ESP with player name
 local function createESP(player)
-    local espBox = Instance.new(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('KJidDEVoDMzsKRPsKQGzBPWdoKbakPfDTHGypJvmcJbrFkMKToNhfdUQm94SGFuZGxlQWRvcm5tZW50'))
-    espBox.Size = Vector3.new(2, 5, 1) -- Size of the box
-    espBox.Color3 = player.TeamColor.Color -- Set color based on team
-    espBox.AlwaysOnTop = true
-    espBox.ZIndex = 5
-    espBox.Parent = player.Character:FindFirstChild(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('iHUxHXOwXSKsjRydaWsXQMjHEELAKeWVMJTsCcGVuDgFoSgaNoBarJjSHVtYW5vaWRSb290UGFydA=='))
+    if player.Character and player.Character:FindFirstChild(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('LDLkRPPWZvQLNMNnIVdWMXBQOTQIzuXyskSlZCJLJLaPJfksLUePFudSHVtYW5vaWRSb290UGFydA==')) then
+        local billboard = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('wBiMBjTprYCfdfhfgFnCXuuRYcnkoxhIXRoMmqNvGTggHbISxlANPnlQmlsbGJvYXJkR3Vp'))
+        billboard.Adornee = player.Character.HumanoidRootPart
+        billboard.Size = UDim2.new(0, 200, 0, 50)
+        billboard.StudsOffset = Vector3.new(0, 3, 0)
+        billboard.Parent = player.Character
+
+        local label = Instance.new(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('fRKPeaNlkHAUtTTGICMFWcfVWkvPQKPbzEDnMfSmmTNJAGreuVZcdmUVGV4dExhYmVs'))
+        label.Text = player.Name
+        label.Size = UDim2.new(1, 0, 1, 0)
+        label.BackgroundTransparency = 1
+        label.TextColor3 = Color3.new(1, 0, 0) -- Red for enemies
+        label.TextStrokeTransparency = 0.8
+        label.TextSize = 14
+        label.Parent = billboard
+    end
 end
 
 -- Function to aim at the nearest enemy
@@ -32,40 +114,63 @@ local function autoAim()
     local closestDistance = math.huge
 
     for _, player in pairs(Players:GetPlayers()) do
-        if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild(tuVslmozExBQltbuRDaXpJMlsrvgDuuCYxQEhLMKOaFZsODYgvmjCBxWgbVwMytczXqBA('UOLpKbDivpusiEkgCSrYhEghKgQobVDAkoZTxoidjAUDwPMGXyGULMhSHVtYW5vaWRSb290UGFydA==')) then
-            local distance = (LocalPlayer.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).magnitude
-            if distance < closestDistance then
-                closestDistance = distance
-                closestEnemy = player
+        if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('GTpZjvTotFCwpJDIXPEdhYxdKtfZoBxCcnnriFsgLYVTDPeOvFfMjRMSHVtYW5vaWRSb290UGFydA==')) then
+            if player.Team ~= LocalPlayer.Team then -- Only consider enemies
+                local distance = (LocalPlayer.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).magnitude
+                if distance < closestDistance then
+                    closestDistance = distance
+                    closestEnemy = player
+                end
             end
         end
     end
 
     if closestEnemy then
-        local targetPosition = closestEnemy.Character.Head.Position
+        local targetPosition = closestEnemy.Character.HumanoidRootPart.Position
         local cameraCFrame = CFrame.new(Camera.CFrame.Position, targetPosition)
-        Camera.CFrame = cameraCFrame
+        Camera.CFrame = Camera.CFrame:Lerp(cameraCFrame, 0.1)
     end
 end
 
--- Main execution block
-local function main()
-    pcall(function()
-        -- Create ESP for all players
+-- Toggle auto aim when button is clicked
+autoAimButton.MouseButton1Click:Connect(function()
+    autoAimEnabled = not autoAimEnabled
+    if autoAimEnabled then
+        autoAimButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('HHKXpvsQUIRBkLzcRxjIwSzSaboRTcBjNwxQXVNjTJwhYNNryRBxtTHQXV0byBBaW06IE9O')
+    else
+        autoAimButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('TaSucRJffUzGaAzvCIMsshyYoHkikjSiUbfUdIVDsYFkhvTsQwfaLrHQXV0byBBaW06IE9GRg==')
+    end
+end)
+
+-- Toggle ESP when button is clicked
+espButton.MouseButton1Click:Connect(function()
+    espEnabled = not espEnabled
+    if espEnabled then
+        espButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('kclqxVTtAUCzZCBxeOnrTnaenQIBaTNGpunbGVVdIHDwuicjtFPIhZLRVNQOiBPTg==')
+        -- Create ESP for all enemy players
         for _, player in pairs(Players:GetPlayers()) do
-            if player ~= LocalPlayer then
+            if player ~= LocalPlayer and player.Team ~= LocalPlayer.Team then
                 createESP(player)
             end
         end
-
-        -- Continuously aim at the nearest enemy
-        while true do
-            autoAim()
-            wait(0.1) -- Adjust the wait time as necessary
+    else
+        espButton.Text = PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('klodymlRbgkgrPWEhmiDAFlrjWJwbhROFwBQPTbeHsadtPUDdHilfOqRVNQOiBPRkY=')
+        -- Remove existing ESPs
+        for _, player in pairs(Players:GetPlayers()) do
+            if player ~= LocalPlayer and player.Character then
+                for _, child in pairs(player.Character:GetChildren()) do
+                    if child:IsA(PbyPkPXzKpkilcevyiGpNVQFiuVRTenlMxOzbXWDwVjCfgwvnrUfijEEjXjnSyidBQWhnLG('wwPdZksMJDDUTTPQLGSFROufKNhawuNkYAbrIYTjqEeHnybozUzyZSFQmlsbGJvYXJkR3Vp')) then
+                        child:Destroy()
+                    end
+                end
+            end
         end
-    end)
-end
+    end
+end)
 
--- Start the script
-main()
-    
+-- Continuously check and apply auto aim if enabled
+RunService.RenderStepped:Connect(function()
+    if autoAimEnabled then
+        autoAim()
+    end
+end)    
